@@ -5,12 +5,13 @@
     <th>Producto</th>
     <th>Descripción</th>
   </tr>
-  <tr *ngFor="let producto of nombre1 index as i;">
+  <tr *ngFor="let producto of productosA index as i;">
     <td>
-      <input type="radio" name="leido-{{i}}" value="si"> Si
+      <input type="radio" name="leido-{{i}}" value="si" > Si
       <input type="radio" name="leido-{{i}}" value="no"> No
     </td>
-    <td>{{}}</td>
-    <td>{{}}</td>
+    <td>{{producto.nombre}}</td>
+    <td>{{producto.desc}}</td>
   </tr>
 </table>
+<!-- COMO CENTRARLOS???-->

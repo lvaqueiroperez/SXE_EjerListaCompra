@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PRODUCTOS_ARRAY } from '../Clases/productosArray';
+import {Component, OnInit} from '@angular/core';
+import {PRODUCTOS_ARRAY} from '../Clases/productosArray';
 import {Productos} from '../Clases/productos';
 
 @Component({
@@ -8,9 +8,11 @@ import {Productos} from '../Clases/productos';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  private nombre1: Productos[];
 
-  constructor() { }
+  productosA = PRODUCTOS_ARRAY;
+
+  constructor() {
+  }
 
   ngOnInit() {
 

@@ -2,11 +2,11 @@ import {Productos} from './productos';
 
 export const PRODUCTOS_ARRAY: Productos[] = [
 
-  {nombre: 'Patata', unidades: 3, precio: 3},
-  {nombre: 'Huevos', unidades: 12, precio: 4},
-  {nombre: 'Sal', unidades: 10, precio: 2},
-  {nombre: 'Arroz', unidades: 12, precio: 1.5},
-  {nombre: 'Azucar', unidades: 3, precio: 3},
-  {nombre: 'Pan', unidades: 21, precio: 2},
+  {nombre: 'Patata', desc: 'Patatas para cocinar'},
+  {nombre: 'Huevos', desc: '12 huevos'},
+  {nombre: 'Sal', desc: 'Sal 100g'},
+  {nombre: 'Arroz', desc: 'Arrox 200g'},
+  {nombre: 'Azucar', desc: 'Azucar 100g'},
+  {nombre: 'Pan', desc: '2 barras de pan'},
 
 ];
