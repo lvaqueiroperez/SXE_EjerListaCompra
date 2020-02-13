@@ -1,5 +1,5 @@
 <h1>Lista de poductos:</h1>
-<table style="width: 100%; border: 1px solid black;">
+<table style="width: 100%; border: 1px solid black; ">
   <tr>
     <th>Estado</th>
     <th>Producto</th>
@@ -7,8 +7,9 @@
   </tr>
   <tr *ngFor="let producto of productosA index as i;">
     <td>
-      <input type="radio" name="leido-{{i}}" value="si" > Si
-      <input type="radio" name="leido-{{i}}" value="no"> No
+      <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
+      <input type="radio" name="leido-{{i}}" value="si" style="alignment: center;">Si
+      <input type="radio" name="leido-{{i}}" value="no" style="alignment: center;"> No
     </td>
     <td>{{producto.nombre}}</td>
     <td>{{producto.desc}}</td>
