@@ -1,0 +1,16 @@
+<h1>Lista de poductos:</h1>
+<table style="width: 100%; border: 1px solid black;">
+  <tr>
+    <th>Estado</th>
+    <th>Producto</th>
+    <th>Descripción</th>
+  </tr>
+  <tr *ngFor="let producto of nombre1 index as i;">
+    <td>
+      <input type="radio" name="leido-{{i}}" value="si"> Si
+      <input type="radio" name="leido-{{i}}" value="no"> No
+    </td>
+    <td>{{}}</td>
+    <td>{{}}</td>
+  </tr>
+</table>
