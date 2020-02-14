@@ -8,7 +8,7 @@
   <tr *ngFor="let producto of productosA index as i;">
     <td>
       <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
-      <input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true >Comprado
+      <input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
       <input type="radio" name="comprado-{{i}}" value="no" [(ngModel)]="producto.comprado" [value]=false> Comprar
     </td>
     <td>{{producto.nombre}}</td>
@@ -16,6 +16,8 @@
   </tr>
 </table>
 <h1>Productos Comprados: </h1>
+<span *ngFor="let producto of productosA index as i;">
+<h3 *ngIf="productosA[i].comprado">{{producto.nombre}}Comprado</h3>
 
-
+</span>
 <!-- COMO CENTRARLOS???-->
