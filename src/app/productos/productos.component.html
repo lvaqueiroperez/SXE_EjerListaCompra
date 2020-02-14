@@ -6,7 +6,7 @@
     <th>Descripción</th>
   </tr>
   <tr *ngFor="let producto of productosA index as i;">
-    <td>
+    <td class = "hola">
       <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
       <input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
       <input type="radio" name="comprado-{{i}}" value="no" [(ngModel)]="producto.comprado" [value]=false> Comprar
@@ -20,4 +20,4 @@
 <h3 *ngIf="productosA[i].comprado">{{producto.nombre}}Comprado</h3>
 
 </span>
-<!-- COMO CENTRARLOS???-->
+<!--DENTRO DE UNA ETIQUETA PODEMOS PONER UNA PROPIEDAD CLASS PARA DEFINIR UNA CLASE,ACCEDEMOS CON ELLA CON .-->
