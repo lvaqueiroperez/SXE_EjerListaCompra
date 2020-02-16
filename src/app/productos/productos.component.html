@@ -6,10 +6,11 @@
     <th>Descripción</th>
   </tr>
   <tr *ngFor="let producto of productosA index as i;">
-    <td class = "radiobtn">
+    <td class = "productos">
       <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
-      <input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
-      <input type="radio" name="comprado-{{i}}" value="no" [(ngModel)]="producto.comprado" [value]=false> Comprar
+      <!--<input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
+      <input type="radio" name="comprado-{{i}}" value="no" [(ngModel)]="producto.comprado" [value]=false> Comprar-->
+      {{producto.nombre}}
     </td>
     <td class = "nombre">{{producto.nombre}}</td>
     <td class = "descripcion">{{producto.desc}}</td>
