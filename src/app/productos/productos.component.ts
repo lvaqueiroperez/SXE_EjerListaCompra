@@ -8,6 +8,7 @@ import {Productos} from '../Clases/productos';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
+  selectedProducto: Productos;
 
   productosA = PRODUCTOS_ARRAY;
 
@@ -16,6 +17,10 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+  // función que usaremos en el evento "click" para asignar a la variable "selectedProducto" el producto seleccionado
+  onSelect(producto: Productos): void {
+    this.selectedProducto = producto;
   }
 
 }
