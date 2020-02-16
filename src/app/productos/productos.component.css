@@ -1,5 +1,5 @@
 
-.hola{cursor: pointer;
+.radiobtn{cursor: pointer;
   position: relative;
   left: 0;
   background-color: #EEE;
@@ -8,7 +8,7 @@
   height: 1.6em;
   border-radius: 4px;}
 
-.hola {
+.radiobtn {
   cursor: pointer;
   position: relative;
   left: 0;
@@ -17,20 +17,20 @@
   padding: .3em 0;
   height: 1.6em;
   border-radius: 4px;}
-.hola li:hover {
+.radiobtn li:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
 }
-.hola li.selected {
+.radiobtn li.selected {
   background-color: #CFD8DC;
   color: white;
 }
-.hola li.selected:hover {
+.radiobtn li.selected:hover {
   background-color: #BBD8DC;
   color: white;
 }
-.hola {
+.radiobtn {
   display: inline-block;
   font-size: small;
   color: white;
