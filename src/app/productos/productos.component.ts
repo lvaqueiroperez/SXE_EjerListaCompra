@@ -21,7 +21,7 @@ export class ProductosComponent implements OnInit {
   // función que usaremos en el evento "click" para asignar a la variable "selectedProducto" el producto seleccionado
   onSelect(producto: Productos): void {
     this.selectedProducto = producto;
-    this.selectedProducto.comprado = true;
+    producto.comprado = true;
   }
 
 }
