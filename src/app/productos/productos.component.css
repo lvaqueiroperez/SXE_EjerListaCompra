@@ -1,27 +1,33 @@
-
-.productos{cursor: pointer;
+.productos {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+.productos td {
+  cursor: pointer;
   position: relative;
   left: 0;
   background-color: #EEE;
   margin: .5em;
   padding: .3em 0;
   height: 1.6em;
-  border-radius: 4px;}
-
-.productos li:hover {
+  border-radius: 4px;
+}
+.productos td:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
 }
-.productos li.selected {
+.productos td.selected {
   background-color: #CFD8DC;
   color: white;
 }
-.productos li.selected:hover {
+.productos td.selected:hover {
   background-color: #BBD8DC;
   color: white;
 }
-.productos {
+.productos .productosBadge {
   display: inline-block;
   font-size: small;
   color: white;
