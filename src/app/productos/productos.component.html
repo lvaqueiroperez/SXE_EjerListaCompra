@@ -1,21 +1,20 @@
 <h1>Lista de poductos:</h1>
 <table style="width: 100%; border: 1px solid black; ">
-  <tr >
+  <tr>
     <th>Estado</th>
     <th>Producto</th>
     <th>Descripción</th>
   </tr>
-  <tr class = "productos" *ngFor="let producto of productosA index as i;" >
-    <td  [class.selected]="producto === selectedProducto" (click)="onSelect(producto)" >
+  <tr class="productos" *ngFor="let producto of productosA index as i;">
+    <td [class.selected]="producto === selectedProducto" (click)="onSelect(producto)">
       <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
       <!--<input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
       <input type="radio" name="comprado-{{i}}" value="no" [(ngModel)]="producto.comprado" [value]=false> Comprar-->
-      <span class = "productosBadge">{{producto.nombre}}</span>
+      <span class="productosBadge">{{producto.nombre}}</span>
     </td>
-    <td class = "nombre">{{producto.nombre}}</td>
-    <td class = "descripcion">{{producto.desc}}</td>
+    <td class="nombre">{{producto.nombre}}</td>
+    <td class="descripcion">{{producto.desc}}</td>
   </tr>
 </table>
 <h1>Productos Comprados: </h1>
-
 <!--DENTRO DE UNA ETIQUETA PODEMOS PONER UNA PROPIEDAD CLASS PARA DEFINIR UNA CLASE,ACCEDEMOS CON ELLA CON .-->
