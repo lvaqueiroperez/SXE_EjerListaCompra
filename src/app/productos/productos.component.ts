@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PRODUCTOS_ARRAY} from '../Clases/productosArray';
 import {Productos} from '../Clases/productos';
+import {PRODUCTOSSELEC_ARRAY} from '../Clases/productosSelecArray';
 
 @Component({
   selector: 'app-productos',
