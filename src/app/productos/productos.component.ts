@@ -13,6 +13,8 @@ export class ProductosComponent implements OnInit {
 
   productosA = PRODUCTOS_ARRAY;
 
+  productosSelecA = PRODUCTOSSELEC_ARRAY;
+
   constructor() {
   }
 
