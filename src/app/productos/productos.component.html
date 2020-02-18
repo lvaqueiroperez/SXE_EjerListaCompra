@@ -22,6 +22,11 @@
 <!--USAR EL INDEX DEL FOR PARA ACCEDER AL PRODUCTO QUE NOS INTERESE-->
 <!--CREAR UN ARRAY DE PRODUCTOS SELECCIONADOS, SE PODRÁ LLENAR ESE ARRAY DESDE AQUÍ?-->
 <!--COMO HACER CADA SELECCIÓN INDEPENDIENTE DE LA OTRA?-->
-<span *ngIf="selectedProducto" [ngModel]=""  >
+<span *ngIf="selectedProducto" [ngModel]="productosSelecA.push(selectedProducto)"  >
+<table style="width: 100%; border: 1px solid black; ">
+  <tr>
+    <td></td>
 
+  </tr>
+</table>
 </span>
