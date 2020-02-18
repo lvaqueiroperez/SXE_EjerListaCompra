@@ -5,7 +5,7 @@
     <th>Producto</th>
     <th>Descripción</th>
   </tr>
-  <tr class="productos" *ngFor="let producto of productosA index as i;" >
+  <tr class="productos" *ngFor="let producto of productosA index as i;">
     <td [class.selected]="producto === selectedProducto" (click)="onSelect(producto,i)">
       <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
       <!--<input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
@@ -24,7 +24,7 @@
 <span *ngIf="selectedProducto">
 <table style="width: 100%; border: 1px solid black; ">
   <tr class="productosSelec" *ngFor="let productoSelec of productosSelecA index as i;">
-    <td>
+    <td [class.selected]="productoSelec === selectedProducto2" (click)="onSelect2(productoSelec,i)">
 
       <span class="productosSelecBadge"> {{productoSelec.nombre}} </span>
 
