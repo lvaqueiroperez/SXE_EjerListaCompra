@@ -1,12 +1,12 @@
-<h1>Lista de poductos:</h1>
+<h1>Productos a Comprar</h1>
 <table style="width: 100%; border: 1px solid black; ">
   <tr>
     <th>Estado</th>
     <th>Producto</th>
     <th>Descripción</th>
   </tr>
-  <tr class="productos" *ngFor="let producto of productosA index as i;">
-    <td [class.selected]="producto === selectedProducto" (click)="onSelect(producto)">
+  <tr class="productos" *ngFor="let producto of productosA index as i;" >
+    <td [class.selected]="producto === selectedProducto" (click)="onSelect(producto,i)">
       <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
       <!--<input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
       <input type="radio" name="comprado-{{i}}" value="no" [(ngModel)]="producto.comprado" [value]=false> Comprar-->
@@ -21,7 +21,6 @@
 <!--DENTRO DE UNA ETIQUETA PODEMOS PONER UNA PROPIEDAD CLASS PARA DEFINIR UNA CLASE,ACCEDEMOS CON ELLA CON .-->
 <!--USAR EL INDEX DEL FOR PARA ACCEDER AL PRODUCTO QUE NOS INTERESE-->
 <!--CREAR UN ARRAY DE PRODUCTOS SELECCIONADOS, SE PODRÁ LLENAR ESE ARRAY DESDE AQUÍ?-->
-<!--COMO HACER CADA SELECCIÓN INDEPENDIENTE DE LA OTRA? CÓMO USAR EL NGMODEL-->
 <span *ngIf="selectedProducto">
 <table style="width: 100%; border: 1px solid black; ">
   <tr class="productosSelec" *ngFor="let productoSelec of productosSelecA index as i;">

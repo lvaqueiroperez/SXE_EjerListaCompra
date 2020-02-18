@@ -3,6 +3,7 @@ import {PRODUCTOS_ARRAY} from '../Clases/productosArray';
 import {Productos} from '../Clases/productos';
 import {PRODUCTOSSELEC_ARRAY} from '../Clases/productosSelecArray';
 
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -22,10 +23,12 @@ export class ProductosComponent implements OnInit {
 
   }
   // función que usaremos en el evento "click" para asignar a la variable "selectedProducto" el producto seleccionado
-  onSelect(producto: Productos): void {
+  onSelect(producto: Productos, index): void {
     this.selectedProducto = producto;
     producto.comprado = true;
     this.productosSelecA.push(producto);
+    this.productosA.splice(index, 1);
+
   }
 
 }
