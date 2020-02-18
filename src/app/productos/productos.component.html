@@ -21,11 +21,15 @@
 <!--DENTRO DE UNA ETIQUETA PODEMOS PONER UNA PROPIEDAD CLASS PARA DEFINIR UNA CLASE,ACCEDEMOS CON ELLA CON .-->
 <!--USAR EL INDEX DEL FOR PARA ACCEDER AL PRODUCTO QUE NOS INTERESE-->
 <!--CREAR UN ARRAY DE PRODUCTOS SELECCIONADOS, SE PODRÁ LLENAR ESE ARRAY DESDE AQUÍ?-->
-<!--COMO HACER CADA SELECCIÓN INDEPENDIENTE DE LA OTRA?-->
-<span *ngIf="selectedProducto" [ngModel]="productosSelecA.push(selectedProducto)"  >
+<!--COMO HACER CADA SELECCIÓN INDEPENDIENTE DE LA OTRA? CÓMO USAR EL NGMODEL-->
+<span *ngIf="selectedProducto">
 <table style="width: 100%; border: 1px solid black; ">
-  <tr>
-    <td></td>
+  <tr class="productosSelec" *ngFor="let productoSelec of productosSelecA index as i;">
+    <td>
+
+      <span class="productosSelecBadge"> {{productoSelec.nombre}} </span>
+
+    </td>
 
   </tr>
 </table>

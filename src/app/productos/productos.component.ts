@@ -25,6 +25,7 @@ export class ProductosComponent implements OnInit {
   onSelect(producto: Productos): void {
     this.selectedProducto = producto;
     producto.comprado = true;
+    this.productosSelecA.push(producto);
   }
 
 }
