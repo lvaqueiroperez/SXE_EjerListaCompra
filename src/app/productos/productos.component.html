@@ -1,10 +1,6 @@
 <h1>Productos a Comprar</h1>
 <table style="width: 100%; border: 1px solid black; ">
-  <tr>
-    <th>Estado</th>
-    <th>Producto</th>
-    <th>Descripción</th>
-  </tr>
+
   <tr class="productos" *ngFor="let producto of productosA index as i;">
     <td [class.selected]="producto === selectedProducto" (click)="onSelect(producto,i)">
       <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
@@ -13,7 +9,7 @@
       <span class="productosBadge">{{producto.nombre}}</span>
 
     </td>
-    <td class="nombre">{{producto.nombre}}</td>
+
     <td class="descripcion">{{producto.desc}}</td>
   </tr>
 </table>
