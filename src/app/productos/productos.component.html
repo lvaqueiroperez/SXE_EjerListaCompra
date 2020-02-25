@@ -1,3 +1,4 @@
+<!--USANDO GRID-->
 <h1>Productos a Comprar</h1>
 <table style="width: 100%; border: 1px solid black; ">
   <tr>
@@ -5,18 +6,17 @@
     <th>Producto</th>
     <th>Descripción</th>
   </tr>
-  <tr class="productos" *ngFor="let producto of productosA index as i;">
-    <td [class.selected]="producto === selectedProducto" (click)="onSelect(producto,i)">
-      <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
-      <!--<input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
-      <input type="radio" name="comprado-{{i}}" value="no" [(ngModel)]="producto.comprado" [value]=false> Comprar-->
-      <span class="productosBadge">{{producto.nombre}}</span>
-
-    </td>
-    <td class="nombre">{{producto.nombre}}</td>
-    <td class="descripcion">{{producto.desc}}</td>
-  </tr>
 </table>
+<span class="productos" *ngFor="let producto of productosA index as i;" [class.selected]="producto === selectedProducto"
+      (click)="onSelect(producto,i)">
+
+      <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
+  <!--<input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
+  <input type="radio" name="comprado-{{i}}" value="no" [(ngModel)]="producto.comprado" [value]=false> Comprar-->
+      <div class="productosBadge">{{producto.nombre}}</div>
+
+  </span>
+
 <h1>Productos Comprados: </h1>
 <!--DENTRO DE UNA ETIQUETA PODEMOS PONER UNA PROPIEDAD CLASS PARA DEFINIR UNA CLASE,ACCEDEMOS CON ELLA CON .-->
 <!--USAR EL INDEX DEL FOR PARA ACCEDER AL PRODUCTO QUE NOS INTERESE-->
