@@ -9,12 +9,13 @@
 </table>
 
 <div class="productosGrid">
-
-  <button class="productosItem" *ngFor="let producto of productosA index as i;"
+  <span class="productosItem" *ngFor="let producto of productosA index as i;"
        [class.selected]="producto === selectedProducto"
        (click)="onSelect(producto,i)">
-    {{producto.nombre}}
-  </button>
+    <button>{{producto.nombre}}</button>
+<input type="image" id="image" alt="Login"
+       src="/src/Iconos/riceIcon.png">
+  </span>
 
 </div>
 
