@@ -10,11 +10,11 @@
 
 <div class="productosGrid">
 
-  <div class="productosItem" *ngFor="let producto of productosA index as i;"
+  <button class="productosItem" *ngFor="let producto of productosA index as i;"
        [class.selected]="producto === selectedProducto"
        (click)="onSelect(producto,i)">
     {{producto.nombre}}
-  </div>
+  </button>
 
 </div>
 
