@@ -7,15 +7,16 @@
     <th>Descripción</th>
   </tr>
 </table>
-<span class="productos" *ngFor="let producto of productosA index as i;" [class.selected]="producto === selectedProducto"
-      (click)="onSelect(producto,i)">
 
-      <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
-  <!--<input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
-  <input type="radio" name="comprado-{{i}}" value="no" [(ngModel)]="producto.comprado" [value]=false> Comprar-->
-      <div class="productosBadge">{{producto.nombre}}</div>
+<div class="productosGrid">
 
-  </span>
+  <div class="productosItem" *ngFor="let producto of productosA index as i;"
+       [class.selected]="producto === selectedProducto"
+       (click)="onSelect(producto,i)">
+    {{producto.nombre}}
+  </div>
+
+</div>
 
 <h1>Productos Comprados: </h1>
 <!--DENTRO DE UNA ETIQUETA PODEMOS PONER UNA PROPIEDAD CLASS PARA DEFINIR UNA CLASE,ACCEDEMOS CON ELLA CON .-->

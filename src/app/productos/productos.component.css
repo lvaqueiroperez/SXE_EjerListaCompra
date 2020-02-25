@@ -1,46 +1,21 @@
-.productos {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 15em;
+/* GRID */
+.productosGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
 }
-.productos td {
-  cursor: pointer;
-  position: relative;
-  left: 0;
-  background-color: rgba(255, 0, 3, 0.56);
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
+
+.productosItem {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 1px;
+  font-size: 30px;
+  text-align: center;
 }
-.productos td:hover {
-  color: #607D8B;
-  background-color: #DDD;
-  left: .1em;
-}
-.productos td.selected {
-  background-color: #CFD8DC;
-  color: white;
-}
-.productos td.selected:hover {
-  background-color: #BBD8DC;
-  color: white;
-}
-.productos .productosBadge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color:#405061;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
-}
+
+/* FIN DE LA GRID */
+
 /* LO MISMO PARA LOS SELECCIONADOS */
 
 .productosSelec {
@@ -49,6 +24,7 @@
   padding: 0;
   width: 15em;
 }
+
 .productosSelec td {
   cursor: pointer;
   position: relative;
@@ -59,25 +35,29 @@
   height: 1.6em;
   border-radius: 4px;
 }
+
 .productosSelec td:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
 }
+
 .productosSelec td.selected {
   background-color: #CFD8DC;
   color: white;
 }
+
 .productosSelec td.selected:hover {
   background-color: #BBD8DC;
   color: white;
 }
+
 .productosSelec .productosSelecBadge {
   display: inline-block;
   font-size: small;
   color: white;
   padding: 0.8em 0.7em 0 0.7em;
-  background-color:#405061;
+  background-color: #405061;
   line-height: 1em;
   position: relative;
   left: -1px;
