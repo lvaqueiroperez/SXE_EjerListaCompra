@@ -10,11 +10,12 @@
 
 <div class="productosGrid">
   <span class="productosItem" *ngFor="let producto of productosA index as i;"
-       [class.selected]="producto === selectedProducto"
-       (click)="onSelect(producto,i)">
-    <button>{{producto.nombre}}</button>
-<input type="image" id="image" alt="Login"
-       src="/src/Iconos/riceIcon.png">
+        [class.selected]="producto === selectedProducto"
+        (click)="onSelect(producto,i)">
+
+           <button type="submit"><img src="/SXE_EjerListaCompra/src/Iconos/riceIcon.png"/>{{producto.nombre}}</button>
+
+
   </span>
 
 </div>
@@ -24,14 +25,15 @@
 <!--USAR EL INDEX DEL FOR PARA ACCEDER AL PRODUCTO QUE NOS INTERESE-->
 <!--CREAR UN ARRAY DE PRODUCTOS SELECCIONADOS, SE PODRÁ LLENAR ESE ARRAY DESDE AQUÍ?-->
 <span *ngIf="selectedProducto">
-<table style="width: 100%; border: 1px solid black; ">
-  <tr class="productosSelec" *ngFor="let productoSelec of productosSelecA index as i;">
-    <td [class.selected]="productoSelec === selectedProducto2" (click)="onSelect2(productoSelec,i)">
 
-      <span class="productosSelecBadge"> {{productoSelec.nombre}} </span>
+  <div class="productosSelecGrid">
+    <span class="productosSelecItem" *ngFor="let productoSelec of productosSelecA index as i;"
+          [class.selected]="productoSelec === selectedProducto2" (click)="onSelect2(productoSelec,i)">
 
-    </td>
+     <button type="submit"><img src="/SXE_EjerListaCompra/src/Iconos/riceIcon.png"/>{{productoSelec.nombre}}</button>
 
-  </tr>
-</table>
+    </span>
+
+  </div>
+
 </span>
