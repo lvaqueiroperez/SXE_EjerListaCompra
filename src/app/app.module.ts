@@ -8,18 +8,19 @@ import {FormsModule} from '@angular/forms';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from 'src/environments/environment';
 import {RouterModule} from '@angular/router';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProductosComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    RouterModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

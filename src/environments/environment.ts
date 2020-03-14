@@ -16,6 +16,8 @@ export const environment = {
     appId: '1:1041483136323:web:1ea205576787148ab443f6',
     measurementId: 'G-VVH0RPV20E'
   },
+
+  title: 'Angular + Firebase'
 };
 
 /*
