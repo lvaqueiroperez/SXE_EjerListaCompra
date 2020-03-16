@@ -1,4 +1,14 @@
-<div *ngIf="authApp.user | async as user; else login">LOGON</div>
+<!--DENTRO DE ESTE PRIMER DIV ENTRAREMOS SI SE PRODUCE EL LOGIN CORRECTAMENTE, Y SERÁ DONDE PONGAMOS EL RESTO
+DE LA LISTA DE LA COMPRA-->
+<!--RECORDAR QUE ESTAMOS EN EL COMPONENTE PRINCIPAL (app.component), PONIENDO LAS ETIQUETAS QUE IDENTIFICAN A LOS OTROS COMPONENTES
+LLEGA (SUS "SELECTOR")-->
+<div *ngIf="authApp.user | async as user; else login">
+
+
+  <app-productos></app-productos>
+
+
+</div>
 
 <ng-template #login>
   <div class="loginDiv">
@@ -10,6 +20,6 @@
       Google Login
     </button>
     <br><br/>
-    <button class = "btnGithub" (click)="authApp.gitHubLogin()"><i class="fab fa-github"></i></button>
+    <button class="btnGithub" (click)="authApp.gitHubLogin()"><i class="fab fa-github"></i></button>
   </div>
 </ng-template>

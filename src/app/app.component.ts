@@ -12,6 +12,7 @@ export class AppComponent {
   title = environment.title;
 
   // PARA PODER USAR LA VARIABLE USER EN EL HTML:
+
   constructor(public authApp: ServicioDeAutentService) {
   }
 }

@@ -11,9 +11,11 @@ import {RouterModule} from '@angular/router';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/database';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,

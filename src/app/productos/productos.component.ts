@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {PRODUCTOS_ARRAY} from '../Clases/productosArray';
 import {Productos} from '../Clases/productos';
 import {PRODUCTOSSELEC_ARRAY} from '../Clases/productosSelecArray';
-
+// PARA PODER USAR LAS VARIABLES DEL OTRO COMPONENTE
+import {ServicioDeAutentService} from '../servicio-de-autent.service';
 
 @Component({
   selector: 'app-productos',
@@ -17,7 +18,8 @@ export class ProductosComponent implements OnInit {
 
   productosSelecA = PRODUCTOSSELEC_ARRAY;
 
-  constructor() {
+  // PARA PODER ACCEDER A LOS MÉTODOS
+  constructor(public authApp: ServicioDeAutentService) {
   }
 
   ngOnInit() {
