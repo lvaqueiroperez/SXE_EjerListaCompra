@@ -1,8 +1,8 @@
 <h1>Productos a Comprar</h1>
 <!--OJO!!! TENEMOS QUE PONER UN BOTÓN PARA HACER EL LOGOUT Y ACCEDER AL MÉTODO CLICK DEL OTRO COMPONENTE (HABRÁ QUE IMPORTARLO ??)-->
 <table style="width: 15%;">
-  <!--CREADA UNA BRANCH DONDE LO HAREMOS CON UNA GRID EN VEZ DE UNA TABLA-->
 
+  <!--MODIFICAMNOS PARA PONER EVENTOS CLOCK RELACIONADOS CON LA BD-->
   <tr class="productos" *ngFor="let producto of productosA index as i;">
     <td [class.selected]="producto === selectedProducto" (click)="onSelect(producto,i)">
       <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
@@ -14,11 +14,11 @@
 
   </tr>
 </table>
-<h1>Productos Comprados: </h1>
+<h1>Productos Comprados </h1>
 <!--DENTRO DE UNA ETIQUETA PODEMOS PONER UNA PROPIEDAD CLASS PARA DEFINIR UNA CLASE,ACCEDEMOS CON ELLA CON .-->
 <!--USAR EL INDEX DEL FOR PARA ACCEDER AL PRODUCTO QUE NOS INTERESE-->
-<!--CREAR UN ARRAY DE PRODUCTOS SELECCIONADOS, SE PODRÁ LLENAR ESE ARRAY DESDE AQUÍ?-->
-<span *ngIf="selectedProducto">
+<!--QUITAMOS LA CONDICIÓN DE IF DE AQUÍ ABAJO PARA QUE SE MUESTREN SIEMPRE LOS PRODUCTOS QUE ESTÁN COMPRADOS O NO-->
+
 <table style="width: 15%; ">
   <tr class="productosSelec" *ngFor="let productoSelec of productosSelecA index as i;">
     <td [class.selected]="productoSelec === selectedProducto2" (click)="onSelect2(productoSelec,i)">
@@ -29,6 +29,6 @@
 
   </tr>
 </table>
-</span>
+
 <br/>
 <button style="margin-left: 550px;" (click)="authApp.logout()">LOGOUT</button>

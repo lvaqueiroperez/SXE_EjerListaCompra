@@ -10,12 +10,14 @@ import {environment} from 'src/environments/environment';
 import {RouterModule} from '@angular/router';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/database';
+import {UsersComponent} from './Users/users/users.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductosComponent
+    ProductosComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

@@ -71,14 +71,45 @@ export class ServicioDeAutentService {
   updateUserData(user: any) {
     console.log('user: ', user);
     // DONDE VAMOS A GUARDAR LOS USUARIOS
-    const path = 'users/';
+    const path = 'users/' + user.uid;
     const u = {
       emailU: user.email
-    }
+    };
 
     // HACEMOS LA ACTUALIZACIÓN EN LA BD, SI NO EXISTE CREA EL CAMPO, PONEMOS CATCH PARA CAPTURAR ERRORES Y A
     // CONTINUACIÓN LO ENSEÑAMOS POR PANTALLA
     this.db.object(path).update(u).catch(error => console.log(error));
+
+  }
+
+  // INSERTAR PRODUCTOS COMPRADOS
+  updateUserDataComprados(user: any) {
+    console.log('user: ', user);
+    // DONDE VAMOS A GUARDAR LOS USUARIOS
+    const path = 'users/' + user.uid;
+    const u = {
+      comprado: user.email
+    };
+
+    // HACEMOS LA ACTUALIZACIÓN EN LA BD, SI NO EXISTE CREA EL CAMPO, PONEMOS CATCH PARA CAPTURAR ERRORES Y A
+    // CONTINUACIÓN LO ENSEÑAMOS POR PANTALLA
+    this.db.object(path).update(u).catch(error => console.log(error));
+
+  }
+
+  // PARA DEVOLVER TODOS LOS USERS
+  getUsers() {
+    const path = 'users/';
+    // return this.db.list(path).valueChanges();
+    // RETORNAMOS LOS OBJETOS USER EN UNA LISTA
+    return this.db.list(path).snapshotChanges();
+
+  }
+
+  // PARA BORRAR USERS
+  removeUser(userUid) {
+    const path = 'users/' + userUid;
+    return this.db.object(path).remove();
 
   }
 

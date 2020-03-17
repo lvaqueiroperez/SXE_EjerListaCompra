@@ -4,6 +4,11 @@ import {Productos} from '../Clases/productos';
 import {PRODUCTOSSELEC_ARRAY} from '../Clases/productosSelecArray';
 // PARA PODER USAR LAS VARIABLES DEL OTRO COMPONENTE
 import {ServicioDeAutentService} from '../servicio-de-autent.service';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {Injectable} from '@angular/core';
+import {auth} from 'firebase';
+
 
 @Component({
   selector: 'app-productos',
@@ -19,8 +24,11 @@ export class ProductosComponent implements OnInit {
   productosSelecA = PRODUCTOSSELEC_ARRAY;
 
   // PARA PODER ACCEDER A LOS MÉTODOS
-  constructor(public authApp: ServicioDeAutentService) {
+  constructor(public authApp: ServicioDeAutentService, public miauth: AngularFireAuth, private db: AngularFireDatabase) {
   }
+
+  // VARIABLE "OBSERVADOR" QUE RECOPILA INFO SOBRE EL ESTADO DEL USER (DEVUELVE: NULL = NO LOGEADO, OBJETO USER = LOGEADO)
+  user = this.miauth.authState;
 
   ngOnInit() {
 
@@ -33,6 +41,7 @@ export class ProductosComponent implements OnInit {
     this.productosSelecA.push(producto);
     this.productosA.splice(index, 1);
 
+    // INCLUÍMOS LAS FUNCIONALIDADES BD EN ESTA FUNCIÓN (IMPORTAR LO NECESARIO)
   }
 
   // función usada por el segundo evento "click" para asignar a la variable "selectedProducto2" el producto seleccionado
