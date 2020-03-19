@@ -4,7 +4,8 @@ DE LA LISTA DE LA COMPRA-->
 LLEGA (SUS "SELECTOR")-->
 <div *ngIf="authApp.user | async as user; else login">
 
-
+  <!--SI ESTAMOS LOGEADOS, SE MUESTRA LA LISTA DE LA COMPRA (LA PRIMERA VEZ ESTARÁ VACÍA)-->
+  <!--SI NO ESTÁ VACÍA, TENDREMOS QUE RECUPERAR LA COMPRA PUESTA EN LA BD Y ACTUALIZAR EL ARRAY MOSTRADO EN PRODUCTOS.COMPONENT.HTML-->
   <app-productos></app-productos>
 
 
@@ -15,6 +16,9 @@ LLEGA (SUS "SELECTOR")-->
     <br/><br/>
     <button class="btn btn-primary" (click)="authApp.login()">Email Login</button>
     <br/><br/>
+    <!--AL PULSAR ESTE BOTÓN, NOS LOGEAMOS USANDO EL MÉTODO DE GLOGIN-->
+    <!--A LA VEZ, INICIAMOS EL MÉTODO QUE ACCEDERÁ A LA BD Y RELLENARÁ LOS ARRAYS DE PRODUCTOS DE LA MANERA CORRECTA-->
+    <!--PUEDE QUE TENGAMOS QUE PRIMERO VACIAR EL ARRAY-->
     <button class="btn btn-danger" (click)="authApp.glogin()">
       <i class="fab fa-google"></i>
       Google Login

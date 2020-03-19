@@ -2,9 +2,10 @@
 <!--OJO!!! TENEMOS QUE PONER UN BOTÓN PARA HACER EL LOGOUT Y ACCEDER AL MÉTODO CLICK DEL OTRO COMPONENTE (HABRÁ QUE IMPORTARLO ??)-->
 <table style="width: 15%;">
 
-  <!--MODIFICAMNOS PARA PONER EVENTOS CLOCK RELACIONADOS CON LA BD-->
+  <!--MODIFICAMNOS PARA PONER EVENTOS CLICK RELACIONADOS CON LA BD-->
   <tr class="productos" *ngFor="let producto of productosA index as i;">
-    <td [class.selected]="producto === selectedProducto" (click)="onSelect(producto,i)">
+    <td [class.selected]="producto === selectedProducto"
+        (click)="onSelect(producto,i);authApp.updateUserDataComprados(producto)">
       <!--PODEMOS PONER LOS RADIOBUTTONS CON ETIQUETAS EXTERNAS PARA PODER USAR EN ELLOS EL CSS-->
       <!--<input type="radio" name="comprado-{{i}}" value="si" [(ngModel)]="producto.comprado" [value]=true>Comprado
       <input type="radio" name="comprado-{{i}}" value="no" [(ngModel)]="producto.comprado" [value]=false> Comprar-->
@@ -21,7 +22,8 @@
 
 <table style="width: 15%; ">
   <tr class="productosSelec" *ngFor="let productoSelec of productosSelecA index as i;">
-    <td [class.selected]="productoSelec === selectedProducto2" (click)="onSelect2(productoSelec,i)">
+    <td [class.selected]="productoSelec === selectedProducto2"
+        (click)="onSelect2(productoSelec,i);authApp.updateUserDataProductosNoC(productoSelec)">
 
       <span class="productosSelecBadge"><b> {{productoSelec.nombre}} </b></span>
 
