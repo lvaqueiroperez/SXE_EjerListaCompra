@@ -27,9 +27,6 @@ export class ProductosComponent implements OnInit {
   constructor(public authApp: ServicioDeAutentService, public miauth: AngularFireAuth, private db: AngularFireDatabase) {
   }
 
-  // VARIABLE "OBSERVADOR" QUE RECOPILA INFO SOBRE EL ESTADO DEL USER (DEVUELVE: NULL = NO LOGEADO, OBJETO USER = LOGEADO)
-  user = this.miauth.authState;
-
   ngOnInit() {
 
   }
@@ -41,7 +38,6 @@ export class ProductosComponent implements OnInit {
     this.productosSelecA.push(producto);
     this.productosA.splice(index, 1);
 
-    // INCLUÍMOS LAS FUNCIONALIDADES BD EN ESTA FUNCIÓN (IMPORTAR LO NECESARIO)
   }
 
   // función usada por el segundo evento "click" para asignar a la variable "selectedProducto2" el producto seleccionado

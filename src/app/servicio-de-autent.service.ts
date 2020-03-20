@@ -10,6 +10,7 @@ import {ProductosComponent} from './productos/productos.component';
 @Injectable({
   providedIn: 'root'
 })
+// OJO! FUNCIONALIDADES CON LA LISTA COMPRA IMPLEMENTADAS EN EL GOOGLE LOGIN
 export class ServicioDeAutentService {
 
   email = '';
@@ -27,7 +28,7 @@ export class ServicioDeAutentService {
   // VARIABLE "OBSERVADOR" QUE RECOPILA INFO SOBRE EL ESTADO DEL USER (DEVUELVE: NULL = NO LOGEADO, OBJETO USER = LOGEADO)
   user = this.miauth.authState;
 
-  // PONER DENTRO DE ESTOS MÉTODOS EL ACCESO A LA DB? O PONERLOS EN SU PROPIO FICHERO???
+
   login() {
     this.miauth.auth.signInWithPopup(new auth.GoogleAuthProvider())
       .then(user => {
@@ -92,12 +93,11 @@ export class ServicioDeAutentService {
     // HACEMOS LA ACTUALIZACIÓN EN LA BD, SI NO EXISTE CREA EL CAMPO, PONEMOS CATCH PARA CAPTURAR ERRORES Y A
     // CONTINUACIÓN LO ENSEÑAMOS POR PANTALLA
     this.db.object(path).update(u).catch(error => console.log(error));
-    // UNA VEZ CONECTADO, OBTENEMOS DE LA BD LOS PRODUCTOS QUE TIENE COMPRADOS O NO COMPRADOS (poner aquí la función !!!)
 
   }
 
   obtenerProductos(user: any) {
-    // RELLENAMOS EL ARRAY DE PRODUCTOS NO C
+    // RELLENAMOS EL ARRAY DE PRODUCTOS NO COMPRADOS
     this.retornarProductosNoC(user).subscribe(snap => {
       // BORRAMOS ARRAYS LOCALES POR SI ACASO PONIENDO ESTO:
       this.productosNoC = [];
@@ -108,7 +108,7 @@ export class ServicioDeAutentService {
       });
     });
 
-    // RELLENAMOS EL ARRAY DE PRODUCTOS C
+    // RELLENAMOS EL ARRAY DE PRODUCTOS CCOMPRADOS
     this.retornarProductosC(user).subscribe(snap => {
       this.productosC = [];
       snap.forEach(u => {
@@ -122,7 +122,6 @@ export class ServicioDeAutentService {
     console.log('productosNoC: ' + this.productosNoC);
     // TENDREMOS QUE PONER SIEMRPE EN LA BD LOS DATOS DEL ARRAY NO COMPRADOS POR SI ACASO, SIN BORRAR LOS COMPRADOS,
     // Y LUEGO MACHACARLOS CON LOS COMPRADOS
-
     // RECORREMOS LOS ARRAYS Y ACTUALIZAMOS LA BD Y LOS ARRAYS DEL HTML
     // PRIMERO LOS NO COMPRADOS:
     console.log('actualizando la bd');
@@ -191,7 +190,7 @@ export class ServicioDeAutentService {
     return this.db.list(path1).snapshotChanges();
   }
 
-  // INSERTAR PRODUCTOS COMPRADOS EN LA BD, RECIBE COMO PARÁMETRO EL PRODUCTO SELECCIONADO (EL USER LO OBTENEMOS DESDE AQUÍ)
+  // INSERTAR PRODUCTOS COMPRADOS EN LA BD, RECIBE COMO PARÁMETRO EL PRODUCTO SELECCIONADO
   updateUserDataComprados(producto: Productos) {
     console.log('actualizando en la bd');
     // OJO A COMO OBTENEMOS EL ID DEL USUARIO ACTUAL
