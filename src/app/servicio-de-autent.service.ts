@@ -14,8 +14,8 @@ export class ServicioDeAutentService {
   email = '';
   pass = '';
   authUser = null;
-  productosC: Productos[];
-  productosNoC: Productos[];
+  productosC: Productos[] = [];
+  productosNoC: Productos[] = [];
 
   // IMPLEMENTAREMOS AQUÍ EL GUARDADO DE DATOS DEL USUARIO EN LA BD DE FIREBASE
   constructor(public miauth: AngularFireAuth, private db: AngularFireDatabase) {
@@ -45,7 +45,9 @@ export class ServicioDeAutentService {
         console.log('this.authUser: ', this.authUser);
         // IMPLEMENTAMOS LA BD EN EL LOGIN:
         this.updateUserData(user.user);
-        // ACCEDEMOS AL MÉTODO DE LOS ARRAYS CON EL MISMO USER
+        // RELLENAMOS PRODUCTOS NO COMPRADOS:
+        this.updateUserDataProductosNoCInicio();
+        // ACCEDEMOS AL MÉTODO PARA OBTENER LOS PRODUCTOS CON EL MISMO USER
         this.obtenerProductos(user.user);
       })
       .catch(error => console.log(error));
@@ -94,10 +96,11 @@ export class ServicioDeAutentService {
   obtenerProductos(user: any) {
     // RELLENAMOS EL ARRAY DE PRODUCTOS NO C
     this.retornarProductosNoC(user).subscribe(snap => {
+      // BORRAMOS ARRAYS LOCALES POR SI ACASO PONIENDO ESTO:
       this.productosNoC = [];
-      snap.forEach(p => {
+      snap.forEach(u => {
 
-        const producto: any = p.payload.val();
+        const producto: any = u.payload.val();
         this.productosNoC.push(producto);
       });
     });
@@ -105,14 +108,61 @@ export class ServicioDeAutentService {
     // RELLENAMOS EL ARRAY DE PRODUCTOS C
     this.retornarProductosC(user).subscribe(snap => {
       this.productosC = [];
-      snap.forEach(p2 => {
+      snap.forEach(u => {
 
-        const producto2: any = p2.payload.val();
-        this.productosC.push(producto2);
+        const producto: any = u.payload.val();
+        this.productosC.push(producto);
       });
     });
-
     // COMPROBAMOS CON UN LOG
+    console.log('productosC: ' + this.productosC);
+    console.log('productosNoC: ' + this.productosNoC);
+    // TENDREMOS QUE PONER SIEMRPE EN LA BD LOS DATOS DEL ARRAY NO COMPRADOS POR SI ACASO, SIN BORRAR LOS COMPRADOS,
+    // Y LUEGO MACHACARLOS CON LOS COMPRADOS
+
+    // RECORREMOS LOS ARRAYS Y ACTUALIZAMOS LA BD Y LOS ARRAYS DEL HTML
+    // PRIMERO LOS NO COMPRADOS:
+    console.log('actualizando la bd');
+    for (const producto of this.productosNoC) {
+      const path = 'users/' + this.miauth.auth.currentUser.uid + '/productosC/' + producto.nombre;
+      this.db.object(path).remove();
+      const path2 = 'users/' + this.miauth.auth.currentUser.uid + '/productosNoC';
+      const nombreP = producto.nombre;
+      const u = {
+        [nombreP]: producto
+      };
+
+      this.db.object(path2).update(u).catch(error => console.log(error));
+    }
+    // AHORA LOS COMPRADOS:
+    for (const producto of this.productosC) {
+      console.log('actualizando en la bd');
+      const path = 'users/' + this.miauth.auth.currentUser.uid + '/productosC';
+      const nombreP = producto.nombre;
+      const u = {
+        [nombreP]: producto
+      };
+
+      this.db.object(path).update(u).catch(error => console.log(error));
+      // BORRAMOS DE LOS NO COMPRADOS
+      const path2 = 'users/' + this.miauth.auth.currentUser.uid + '/productosNoC' + producto.nombre;
+      this.db.object(path2).remove();
+    }
+
+    // AHORA LOS ARRAYS HTML(los vaciamos y ponemos en ellos el contenido de las BD)
+    // (no deja vaciarlo de la otra manera ????)
+    console.log('METER ARRAY: ' + this.productosNoC);
+    console.log('METER ARRAY: ' + this.productosC);
+    PRODUCTOS_ARRAY.length = 0;
+    PRODUCTOSSELEC_ARRAY.length = 0;
+    // EL NAVEGADOR SE BLOQUEA ??? FALTA ACTUALIZAR LA LISTA HTML CADA VEZ QUE SE LOGUEA UN USER DIFERENTE
+    for (const producto of this.productosNoC) {
+      PRODUCTOS_ARRAY.push();
+    }
+    for (const producto of this.productosC) {
+      PRODUCTOSSELEC_ARRAY.push(producto);
+    }
+
   }
 
   retornarProductosNoC(user: any) {
@@ -142,7 +192,7 @@ export class ServicioDeAutentService {
 
     this.db.object(path).update(u).catch(error => console.log(error));
     // BORRAMOS DE LOS NO COMPRADOS
-    const path2 = 'users/' + this.miauth.auth.currentUser.uid + '/productosNoC' + producto.nombre;
+    const path2 = 'users/' + this.miauth.auth.currentUser.uid + '/productosNoC/' + producto.nombre;
     this.db.object(path2).remove();
 
 
@@ -160,6 +210,21 @@ export class ServicioDeAutentService {
     };
 
     this.db.object(path2).update(u).catch(error => console.log(error));
+  }
+
+  // MÉTODO QUE SE EJECUTARÁ EN CADA LOGEO Y QUE NO BORRA LOS COMPRADOS:
+  updateUserDataProductosNoCInicio() {
+    this.productosNoC = PRODUCTOS_ARRAY;
+    const path = 'users/' + this.miauth.auth.currentUser.uid + '/productosNoC';
+    // RECORREMOS EL ARRAY Y ACTUALIZAMOS LA BD
+    for (const producto of this.productosNoC) {
+      console.log(producto);
+      const u = {
+        [producto.nombre]: producto
+      };
+      this.db.object(path).update(u).catch(error => console.log(error));
+    }
+
   }
 
   // PARA DEVOLVER TODOS LOS USERS
