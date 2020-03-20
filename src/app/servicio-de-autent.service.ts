@@ -5,6 +5,7 @@ import {AngularFireDatabase, AngularFireDatabaseModule} from '@angular/fire/data
 import {Productos} from './Clases/productos';
 import {PRODUCTOS_ARRAY} from './Clases/productosArray';
 import {PRODUCTOSSELEC_ARRAY} from './Clases/productosSelecArray';
+import {ProductosComponent} from './productos/productos.component';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,10 @@ export class ServicioDeAutentService {
   productosC: Productos[] = [];
   productosNoC: Productos[] = [];
 
-  // IMPLEMENTAREMOS AQUÍ EL GUARDADO DE DATOS DEL USUARIO EN LA BD DE FIREBASE
-  constructor(public miauth: AngularFireAuth, private db: AngularFireDatabase) {
+  // IMPLEMENTAREMOS AQUÍ EL GUARDADO DE DATOS DEL USUARIO EN LA BD DE FIREBASE,
+  // AÑADIMOS VARIABLES QUE NOS HAGAN FALTA EN EL CONSTRUCTOR
+  // (PARA QUE FUNCIONASE "prod", PONER UN PROVIDER?? EN APP.MODULE.TS)
+  constructor(public miauth: AngularFireAuth, private db: AngularFireDatabase, public prod: ProductosComponent) {
   }
 
   // VARIABLE "OBSERVADOR" QUE RECOPILA INFO SOBRE EL ESTADO DEL USER (DEVUELVE: NULL = NO LOGEADO, OBJETO USER = LOGEADO)
@@ -151,18 +154,27 @@ export class ServicioDeAutentService {
 
     // AHORA LOS ARRAYS HTML(los vaciamos y ponemos en ellos el contenido de las BD)
     // (no deja vaciarlo de la otra manera ????)
+    // EL NAVEGADOR SE BLOQUEA ??? FALTA ACTUALIZAR LA LISTA HTML CADA VEZ QUE SE LOGUEA UN USER DIFERENTE
+    // PARECE QUE NO FUNCIONAN LOS PUSH DESDE ESTA CLASE, ACCEDEMOS A LOS MÉTODOS DE "PRODUCTOS.COMPONENT.TS"
+    /*
     console.log('METER ARRAY: ' + this.productosNoC);
     console.log('METER ARRAY: ' + this.productosC);
     PRODUCTOS_ARRAY.length = 0;
     PRODUCTOSSELEC_ARRAY.length = 0;
-    // EL NAVEGADOR SE BLOQUEA ??? FALTA ACTUALIZAR LA LISTA HTML CADA VEZ QUE SE LOGUEA UN USER DIFERENTE
+
     for (const producto of this.productosNoC) {
-      PRODUCTOS_ARRAY.push();
+      // OBTENEMOS EL INDEX
+      const index: number = this.productosNoC.indexOf(producto);
+      // LLAMAMOS A LA FUNCIÓN:
+      this.prod.onSelect2(producto, index);
     }
     for (const producto of this.productosC) {
-      PRODUCTOSSELEC_ARRAY.push(producto);
+      // OBTENEMOS EL INDEX
+      const index: number = this.productosC.indexOf(producto);
+      // LLAMAMOS A LA FUNCIÓN:
+      this.prod.onSelect(producto, index);
     }
-
+   */
   }
 
   retornarProductosNoC(user: any) {

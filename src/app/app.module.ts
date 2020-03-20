@@ -24,9 +24,9 @@ import {UsersComponent} from './Users/users/users.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     RouterModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [ProductosComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
